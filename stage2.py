@@ -89,11 +89,3 @@ else:
         print(str(h), str(m-45))
     else:
         print(str(24+h-1), str(60+m-45))
-
-
-
-
-
-
-
-
