@@ -1,3 +1,18 @@
+# 코딩테스트 연습
+
+# 15596
+# 정수 n개가 주어졌을 때, n개의 합을 구하는 함수를 작성하시오.
+# 작성해야 하는 함수는 다음과 같다.
+# Python 2, Python 3, PyPy, PyPy3: def solve(a: list) -> int
+# a: 합을 구해야 하는 정수 n개가 저장되어 있는 리스트 (0 ≤ a[i] ≤ 1,000,000, 1 ≤ n ≤ 3,000,000)
+# 리턴값: a에 포함되어 있는 정수 n개의 합 (정수)
+def solve(a):
+    ans = 0
+    for n in a:
+        ans += n
+    return ans
+
+
 # 4673 0
 # 셀프 넘버는 1949년 인도 수학자 D.R. Kaprekar가 이름 붙였다. 
 # 양의 정수 n에 대해서 d(n)을 n과 n의 각 자리수를 더하는 함수라고 정의하자. 예를 들어, d(75) = 75+7+5 = 87이다.
@@ -25,3 +40,27 @@ selfnum.sort()
 
 for i in selfnum:
     print(i)
+
+# 1065
+# 어떤 양의 정수 X의 각 자리가 등차수열을 이룬다면, 그 수를 한수라고 한다. 
+# 등차수열은 연속된 두 개의 수의 차이가 일정한 수열을 말한다. 
+# N이 주어졌을 때, 1보다 크거나 같고, N보다 작거나 같은 한수의 개수를 출력하는 프로그램을 작성하시오. 
+# 첫째 줄에 1,000보다 작거나 같은 자연수 N이 주어진다.
+# 첫째 줄에 1보다 크거나 같고, N보다 작거나 같은 한수의 개수를 출력한다.
+def count_han(n):
+    count = 0
+    for i in range(1,n+1):
+        if i < 100:
+            count+=1
+        else:
+            numlist = list(map(int, str(i)))
+            if numlist[2] - numlist[1] == numlist[1] - numlist[0]:
+                count+=1
+    return count
+print(count_han(int(input())))
+
+
+
+
+
+

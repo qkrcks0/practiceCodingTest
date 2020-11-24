@@ -1,5 +1,5 @@
 # 코딩테스트 연습
-
+'''
 # 10818
 # N개의 정수가 주어진다. 이때, 최솟값과 최댓값을 구하는 프로그램을 작성하시오.
 # 첫째 줄에 정수의 개수 N (1 ≤ N ≤ 1,000,000)이 주어진다. 
@@ -8,12 +8,12 @@
 # 첫째 줄에 주어진 정수 N개의 최솟값과 최댓값을 공백으로 구분해 출력한다.
 n = int(input())
 nlist = list(map(int, input().split()))
-min = nlist[0]
-max = nlist[0]
+min = nlist[0] # 최소 초기값을 0번째 인덱스로 설정
+max = nlist[0] # 최대 초기값을 0번째 인덱스로 설정
 for i in range(n-1):
-    if min > nlist[i+1]:
+    if min > nlist[i+1]: # 최소
         min = nlist[i+1]
-    if max < nlist[i+1]:
+    if max < nlist[i+1]: # 최대
         max = nlist[i+1]
 print(min, max)
 
@@ -44,10 +44,10 @@ print(min, max)
 nlist = []
 for i in range(9):
     nlist.append(int(input()))
-max_num = max(nlist)
-print(max_num)
-print(nlist.index(max_num+1)
-
+max_num = max(nlist) # 최대
+print(max_num) # 최댓값 출력
+print(nlist.index(max_num+1) # 최댓값이 몇번 째 수인지 출력
+'''
 # 2577
 # 세 개의 자연수 A, B, C가 주어질 때 A×B×C를 계산한 결과에 0부터 9까지 
 # 각각의 숫자가 몇 번씩 쓰였는지를 구하는 프로그램을 작성하시오.
@@ -60,11 +60,13 @@ print(nlist.index(max_num+1)
 # 마찬가지로 둘째 줄부터 열 번째 줄까지 A×B×C의 결과에 1부터 9까지의 
 # 숫자가 각각 몇 번 쓰였는지 차례로 한 줄에 하나씩 출력한다.
 
+# a,b,c: 입력받은 수 
 a = int(input())
 b = int(input())
 c = int(input())
 abc = a*b*c
-for i in range(10):
+for i in range(10): # 1~9
+    # 1~9가 몇번씩 반복되었는지 출력
     print(str(abc).count(str(i)))
 
 # 3052
@@ -77,7 +79,9 @@ for i in range(10):
 # 첫째 줄에, 42로 나누었을 때, 서로 다른 나머지가 몇 개 있는지 출력한다.
 nlist = []
 for i in range(10):
+    # nlist에 입력된 값들의 42로 나눈 나머지 append
     nlist.append(int(input())%42)
+# set은 중복되는 값x
 print(len(list(set(nlist))))
 
 # 1546
@@ -94,13 +98,15 @@ print(len(list(set(nlist))))
 # 첫째 줄에 새로운 평균을 출력한다. 
 # 실제 정답과 출력값의 절대오차 또는 상대오차가 10^-2 이하이면 정답이다.
 n = int(input())
+# 점수를 가로로 입력받음
 score_list = list(map(int, input().split()))
-m = max(score_list)
+m = max(score_list) # 최댓값
 sum = 0
 for i in range(n):
+    # 점수 치환
     score_list[i] = score_list[i] / m*100
     sum += score_list[i]
-print(sum/n)
+print(sum/n) # 치환된 점수 평균
 
 # 8958
 # "OOXXOXXOOO"와 같은 OX퀴즈의 결과가 있다. O는 문제를 맞은 것이고, 
@@ -113,20 +119,20 @@ print(sum/n)
 # 각 테스트 케이스마다 점수를 출력한다.
 n = int(input())
 oxlist = []
-o = 0
-sum = 0
 for i in range(n):
     oxlist.append(input())
 for i in oxlist:
+    o = 0 # O의 개수를 담을 변수
+    sum = 0
     for j in i:
+        # 연속된 O의 개수만큼+1
         if j == "O":
             o += 1
             sum += o
         else:
             o = 0
     print(sum)
-    o = 0
-    sum = 0
+    
 
 # 4344
 # 대학생 새내기들의 90%는 자신이 반에서 평균은 넘는다고 생각한다. 
@@ -135,17 +141,19 @@ for i in oxlist:
 # 둘째 줄부터 각 테스트 케이스마다 학생의 수 N(1 ≤ N ≤ 1000, N은 정수)이 첫 수로 주어지고, 
 # 이어서 N명의 점수가 주어진다. 점수는 0보다 크거나 같고, 100보다 작거나 같은 정수이다.
 # 각 케이스마다 한 줄씩 평균을 넘는 학생들의 비율을 반올림하여 소수점 셋째 자리까지 출력한다.
-c = int(input())
-case_list = []
+c = int(input()) # 테스트 케이스 개수
+case_list = [] # 테스트 케이스들을 담을 변수
+# 테스트 케이스들을 case_list에 append
 for i in range(c):
     case_list.append(list(map(int, input().split())))
 for i in case_list:
+    # avg: 평균, above: 평균 이상인 학생의 수
     avg, above = 0, 0
-    avg = sum(i[1:])/i[0]
+    avg = sum(i[1:])/i[0] # 평균
     for j in range(1, len(i)):
         if i[j] > avg:
-            above += 1
-    print("{0:.3f}%".format(above/i[0] * 100))
+            above += 1 # 점수가 평균 보다 크면 above+1
+    print("{0:.3f}%".format(above/i[0] * 100)) # 평균 이상인 학생의 비율 출력
     
 
 
