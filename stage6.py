@@ -6,12 +6,13 @@
 # Python 2, Python 3, PyPy, PyPy3: def solve(a: list) -> int
 # a: 합을 구해야 하는 정수 n개가 저장되어 있는 리스트 (0 ≤ a[i] ≤ 1,000,000, 1 ≤ n ≤ 3,000,000)
 # 리턴값: a에 포함되어 있는 정수 n개의 합 (정수)
-def solve(a):
-    ans = 0
-    for n in a:
-        ans += n
-    return ans
 
+def solve(a):
+    ans = 0 # 정수 n개의 합을 구하기 위한 변수
+    for n in a: # n개의 정수가 담긴 리스트 a에서
+        ans += n # 하나씩 ans에 더해준다
+    return ans # n개의 정수의 합 리턴
+print(solve(list(map(int, input().split())))) # n개의 정수의 합 출력
 
 # 4673 0
 # 셀프 넘버는 1949년 인도 수학자 D.R. Kaprekar가 이름 붙였다. 
@@ -31,15 +32,12 @@ dn = 0
 for i in range(1,10001):
     dn = i
     for j in range(0, len(str(i))):
-        dn += int(str(i)[j])
-    num.append(dn)
-
-selfnum = set(allnum) - set(num)
-selfnum = list(selfnum)
-selfnum.sort()
-
+        dn += int(str(i)[j]) # 생성자 dn
+    num.append(dn) # 생성자들의 리스트
+selfnum = list(set(allnum) - set(num)) # 전체수 - 생성자
+selfnum.sort() # set은 순서, 반복x
 for i in selfnum:
-    print(i)
+    print(i) # 출력
 
 # 1065
 # 어떤 양의 정수 X의 각 자리가 등차수열을 이룬다면, 그 수를 한수라고 한다. 
@@ -48,16 +46,16 @@ for i in selfnum:
 # 첫째 줄에 1,000보다 작거나 같은 자연수 N이 주어진다.
 # 첫째 줄에 1보다 크거나 같고, N보다 작거나 같은 한수의 개수를 출력한다.
 def count_han(n):
-    count = 0
+    count = 0 # 한수의 개수를 담을 변수
     for i in range(1,n+1):
         if i < 100:
-            count+=1
+            count+=1 # 100보다 작으면 한수
         else:
             numlist = list(map(int, str(i)))
-            if numlist[2] - numlist[1] == numlist[1] - numlist[0]:
+            if numlist[2] - numlist[1] == numlist[1] - numlist[0]: # 공차가 같으면 한수
                 count+=1
     return count
-print(count_han(int(input())))
+print(count_han(int(input()))) # 함수 호출
 
 
 
