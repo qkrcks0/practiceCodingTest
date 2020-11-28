@@ -126,13 +126,14 @@ print(max(a,b))
 # 할머니가 외운 단어가 주어졌을 때, 이 전화를 걸기 위해서 필요한 최소 시간을 구하는 프로그램을 작성하시오.
 # 첫째 줄에 알파벳 대문자로 이루어진 단어가 주어진다. 단어는 2글자~15글자로 이루어져 있다.
 # 첫째 줄에 다이얼을 걸기 위해서 필요한 최소 시간을 출력한다.
-s = input().upper()
-time = 0
+
+s = input().upper() # 문자열 대문자로 입력받음
+time = 0 # 걸리는 시간을 담을 변수
 dial = ['ABC','DEF','GHI','JKL','MNO','PQRS','TUV','WXYZ']
 for i in range(len(s)):
     for j in dial:
-        if s[i] in j:
-            time += dial.index(j)+3
+        if s[i] in j: # 입력받은 문자열이 dial에 포함된다면
+            time += dial.index(j)+3 # 시간계산
 print(time)
 
 # 2941
@@ -144,12 +145,12 @@ print(time)
 # 단어는 크로아티아 알파벳으로 이루어져 있다. 문제 설명의 표에 나와있는 알파벳은 변경된 형태로 입력된다.
 # 입력으로 주어진 단어가 몇 개의 크로아티아 알파벳으로 이루어져 있는지 출력한다.
 
-s = input()
+s = input() # 입력받은 문자열
+# 크로아티아 알파벳
 calph = ['c=', 'c-', 'dz=', 'd-', 'lj', 'nj', 's=', 'z=']
-count = 0
 for i in calph:
     if i in s:
-        count += 1
+        # 입력받은 문자열에 크로아티아 알파벳이 포함되면 *로 변환
         s = s.replace(i, "*")
 print(len(s))
 '''
@@ -161,16 +162,20 @@ print(len(s))
 # 첫째 줄에 단어의 개수 N이 들어온다. N은 100보다 작거나 같은 자연수이다. 
 # 둘째 줄부터 N개의 줄에 단어가 들어온다. 단어는 알파벳 소문자로만 되어있고 중복되지 않으며, 길이는 최대 100이다.
 # 첫째 줄에 그룹 단어의 개수를 출력한다.
-n = int(input())
-count = 0
+
+n = int(input()) # 단어 n개 입력
+count = 0 # 그룹단어의 개수
 for i in range(n):
-    error = 0
+    error = 0 # 그룹단어가 아닐 때
     s = input()
-    for j in list(set(s)):
+    for j in list(set(s)): 
+        # dp에 인덱스값 저장
+        # ex) aabbbccb: a-[0,1], b-[2,3,4,7] c-[5,6]
         dp = [i for i, value in enumerate(s) if value == j]
         for k in range(len(dp)-1):
-            if dp[k+1] - dp[k] != 1:
-                error += 1; continue
+            # 인덱스
+            if dp[k+1] - dp[k] != 1: # 단어가 연속해서 나오지 않을 때
+                error += 1; continue 
     if error == 0: count+=1
     else: continue
 print(count)
