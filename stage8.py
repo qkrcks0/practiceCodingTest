@@ -18,7 +18,7 @@ if c <= b: # 손익 분기점이 존재하지 않을 때
 else: # 손익 분기점이 존재할 때
     BREAK_EVEN_POINT = a//(c-b) + 1
 print(BREAK_EVEN_POINT)
-'''
+
 # 2839
 # 상근이는 요즘 설탕공장에서 설탕을 배달하고 있다. 
 # 상근이는 지금 사탕가게에 설탕을 정확하게 N킬로그램을 배달해야 한다. 
@@ -55,7 +55,6 @@ bh = []
 n = int(input())
 i = 1
 while True:
-    final = 0
     # an = 3n(n-1)+1 / an-1 = 3(n-1)(n-2)+1
     final = (3*i*(i-1))+1
     bh.append(final)
@@ -63,17 +62,34 @@ while True:
         break
     i+=1
 print(len(bh))
+'''
+# # 1193
+# 이와 같이 나열된 분수들을 1/1 -> 1/2 -> 2/1 -> 3/1 -> 2/2 -> … 과 같은 지그재그 순서로 차례대로 
+# 1번, 2번, 3번, 4번, 5번, … 분수라고 하자.
+# X가 주어졌을 때, X번째 분수를 구하는 프로그램을 작성하시오.
+# 첫째 줄에 X(1 ≤ X ≤ 10,000,000)가 주어진다.
+# 첫째 줄에 분수를 출력한다.
 
+# n,ls = int(input()),[]
+# for i in range(1,4473):
+#     if i%2 == 0:
+#         ls += [j for j in range(1, i+1)]
+#     else:
+#         ls += [j for j in range(i, 0, -1)]
+#     if len(ls) >= n:
+#         print(f"{ls[n-1]}/{i+1-ls[n-1]}")
+#         break
 
-
-
-
-
-
-
-
-
-
+n,i= int(input()),1
+while n > i:
+    n -= i
+    i += 1
+if i%2 == 0:
+    print(f"{n}/{i+1-n}")
+else:
+    print(f"{i+1-n}/{n}")
+    
+    
 
 
 
