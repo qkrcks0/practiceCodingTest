@@ -131,7 +131,7 @@ for i in range(t):
         x -= 1
         y = h
     print(y*100 + x)
-'''
+
 # 2775
 # 평소 반상회에 참석하는 것을 좋아하는 주희는 이번 기회에 부녀회장이 되고 싶어 
 # 각 층의 사람들을 불러 모아 반상회를 주최하려고 한다. 이 아파트에 거주를 하려면 조건이 있는데, 
@@ -152,11 +152,22 @@ for i in range(t):
     for f in range(k):
         for u in range(1,n):
             ls0[u] += ls0[u-1]
-        print(ls0)
     print(ls0[-1])
-
-
-
+'''
+# 1011
+t = int(input())
+for i in range(t):
+    x,y = map(int, input().split())
+    d = y-x
+    count = 0
+    move = 1
+    move_plus = 0
+    while d - move_plus > 0:
+        count += 1
+        move_plus += move
+        if count % 2 == 0:
+            move+=1
+    print(count)
 
 
 
